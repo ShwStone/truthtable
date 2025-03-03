@@ -176,6 +176,11 @@ function generateTruthTable(expression) {
     const parser = new Parser(lexer);
     const ast = parser.parse();
 
+    const nextToken = lexer.getNextToken();
+    if (nextToken.type !== 'EOF') { 
+        throw new Error(`Unexpected token: ${nextToken.type}`);
+    }
+
     const variables = Array.from(getVariables(ast)).sort();
     const truthTable = [];
 
