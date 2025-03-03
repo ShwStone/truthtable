@@ -1,7 +1,6 @@
 const display = document.getElementById('display');
 const errorDiv = document.getElementById('error-message');
 const container = document.getElementById('table-container');
-display.focus()
 
 function insertAtCursor(value) {
     const start = display.selectionStart;
@@ -75,8 +74,7 @@ function calculate() {
     } catch (error) {
         errorDiv.textContent = `错误: ${error.message}`;
     }
-    display.selectionStart = display.value.length;
-    display.focus()
+    display.selectionStart = display.value.length
 }
 
 function clearDisplay() {
