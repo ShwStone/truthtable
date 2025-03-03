@@ -47,6 +47,11 @@ class Lexer {
             return new Token('OR', '∨');
         }
 
+        if (currentChar === '⊕' || currentChar === '^') {
+            this.position++;
+            return new Token('XOR', '⊕');
+        }
+
         if (currentChar === '→' || currentChar === '>') {
             this.position++;
             return new Token('IMPLIES', '→');
@@ -109,7 +114,7 @@ class Parser {
         throw new Error(`Unexpected token: ${token.type}`);
     }
 
-    priority = ['IFF', 'CONVERSE', 'IMPLIES', 'OR', 'AND'];
+    priority = ['IFF', 'CONVERSE', 'IMPLIES', 'XOR', 'OR', 'AND'];
 
     parse(op = 'IFF') {
         const next_pos = this.priority.findIndex((s) => (s === op)) + 1;
@@ -138,6 +143,8 @@ function evaluate(node, variables) {
         return evaluate(node.left, variables) && evaluate(node.right, variables);
     } else if (node.type === 'OR') {
         return evaluate(node.left, variables) || evaluate(node.right, variables);
+    } else if (node.type === 'XOR') {
+        return Boolean(evaluate(node.left, variables) ^ evaluate(node.right, variables));
     } else if (node.type === 'IMPLIES') {
         return !evaluate(node.left, variables) || evaluate(node.right, variables);
     } else if (node.type === 'CONVERSE') {
@@ -150,7 +157,7 @@ function evaluate(node, variables) {
 }
 
 const unaryOperators = ['NOT']
-const binaryOperators = ['AND', 'OR', 'IMPLIES', 'CONVERSE', 'IFF']
+const binaryOperators = ['AND', 'OR', 'XOR', 'IMPLIES', 'CONVERSE', 'IFF']
 
 function getVariables(node, variables = new Set()) {
     if (node.type === 'IDENTIFIER') {
