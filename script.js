@@ -8,8 +8,7 @@ function insertAtCursor(value) {
     const current = display.value;
     
     display.value = current.substring(0, start) + value + current.substring(end);
-    display.selectionStart = display.selectionEnd = start + value.length;
-    display.focus();
+    display.selectionStart = display.selectionEnd = start + value.length
 }
 
 function handleButtonClick(value) {
