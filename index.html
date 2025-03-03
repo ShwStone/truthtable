@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简易计算器</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div class="calculator">
+    <div id="table-container"></div>
+    <div id="error-message" class="error"></div>
+    <input type="text" class="display" id="display">
+    <div class="buttons">
+        <button class="button clear" onclick="clearDisplay()">C</button>
+        <button class="button">p</button>
+        <button class="button">q</button>
+        <button class="button">r</button>
+        <button class="button operator">¬</button>
+        <button class="button operator">∧</button>
+        <button class="button operator">∨</button>
+        <button class="button operator">⊕</button>
+        <button class="button operator">→</button>
+        <button class="button operator">←</button>
+        <button class="button operator">↔</button>
+        <button class="button equal" onclick="calculate()">=</button>
+    </div>
+    <div class="info">括号和更多变元可从键盘输入</div>
+    <div class="info">键盘符号表：
+</div>
+<script src="parser.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
