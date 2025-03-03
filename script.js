@@ -92,3 +92,7 @@ document.querySelectorAll('.button').forEach(button => {
         button.onclick = () => handleButtonClick(value);
     }
 });
+
+document.getElementById('show').addEventListener('click', ()=>{
+    document.getElementById('keytable').style = "";
+})

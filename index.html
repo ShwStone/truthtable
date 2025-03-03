@@ -27,28 +27,34 @@
         <button class="button equal" onclick="calculate()">=</button>
     </div>
     <div class="info">括号和更多变元可从键盘输入</div>
-    <div class="info">
-        <p>键盘符号表：</p>
+    <div class="info" id="show">点击查看键盘符号表</div>
+    <div style="display: none;" class="info" id="keytable">
         <table border="1">
             <tr>
                 <td>取反</td>
                 <td>合取</td>
                 <td>析取</td>
                 <td>异或</td>
-                <td>蕴涵</td>
-                <td>反蕴涵</td>
-                <td>等价</td>
             </tr>
             <tr>
                 <td>~</td>
                 <td>&</td>
                 <td>|</td>
                 <td>^</td>
+            </tr>
+        </table>
+        <table border="1">
+            <tr>
+                <td>蕴涵</td>
+                <td>反蕴涵</td>
+                <td>等价</td>
+            </tr>
+            <tr>
                 <td>></td>
                 <td><</td>
                 <td>=</td>
             </tr>
-          </table>
+        </table>
     </div>
 </div>
 <script src="parser.js"></script>
